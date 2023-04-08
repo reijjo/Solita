@@ -3,6 +3,10 @@ const cors = require('cors')
 const middleware = require('./utils/middleware')
 const app = express()
 
+const db_conn = require('./utils/dbConnection')
+const { connectDB } = db_conn
+connectDB()
+
 const testRouter = require('./controllers/test')
 
 app.use(express.json())

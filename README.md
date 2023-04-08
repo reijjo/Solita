@@ -13,15 +13,16 @@ Helsinki City Bike App
 * Tailwind CSS
 
 ## How to use:
-	
+
 <details>
 	<summary>Prerequisites</summary>
-	
+
+* Make file namend
 * You must have Docker installed on your computer:
 https://docs.docker.com/desktop/install/mac-install/
 </details>
-	
-	
+
+
 <details>
 	<summary>Configurations</summary>
 </details>

@@ -156,8 +156,12 @@ module.exports = testRouter
 # How to run:
 ## Frontend folder:
 * npm start
+* try that it works:
+http://localhost:3000
 
 ## Backend folder:
 * npm run start
 or
 * npm run dev
+* try that it works:
+http://localhost:3001/api/test
