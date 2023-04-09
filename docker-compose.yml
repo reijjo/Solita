@@ -40,10 +40,6 @@ services:
     restart: always
     env_file:
       - ./server/.env
-#    environment:
-#     POSTGRES_USER: reijjo
-#     POSTGRES_PASSWORD: Repe_123
-#     POSTGRES_DB: City_Bike
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
@@ -56,8 +52,6 @@ services:
     env_file:
       - ./server/.env
     environment:
-#      PGADMIN_DEFAULT_EMAIL: email@email.com
-#      PGADMIN_DEFAULT_PASSWORD: Repe_123
       GUNICORN_ACCESS_LOGFILE: '/dev/null'
     ports:
       - 8080:80

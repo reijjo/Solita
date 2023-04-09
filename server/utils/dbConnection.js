@@ -2,10 +2,10 @@ const config = require('./config')
 const { Pool } = require('pg')
 
 const pool = new Pool({
-	user: config.PGUSER,
+	user: config.POSTGRES_USER,
 	host: config.PGHOST,
-	database: config.PGDATABASE,
-	password: config.PGPASSWORD,
+	database: config.POSTGRES_DB,
+	password: config.PGADMIN_DEFAULT_PASSWORD,
 	port: config.PGPORT
 })
 
@@ -17,7 +17,7 @@ const connectDB = () => {
 			setTimeout(connectDB, 5000)
 		}
 		else {
-			console.log(`Connected to database ${config.PGDATABASE}`)
+			console.log(`Connected to database ${config.POSTGRES_DB}`)
 		}
 	})
 }

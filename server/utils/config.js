@@ -2,12 +2,12 @@ require('dotenv').config()
 
 let PORT = process.env.PORT
 
-let PGUSER = process.env.PGUSER
+let POSTGRES_USER = process.env.POSTGRES_USER
+let POSTGRES_DB = process.env.POSTGRES_DB
+let PGADMIN_DEFAULT_PASSWORD = process.env.PGADMIN_DEFAULT_PASSWORD
 let PGHOST = process.env.PGHOST
-let PGDATABASE = process.env.PGDATABASE
-let PGPASSWORD = process.env.PGPASSWORD
 let PGPORT = process.env.PGPORT
 
 module.exports = {
-	PORT, PGUSER, PGHOST, PGDATABASE, PGPASSWORD, PGPORT
+	PORT, POSTGRES_USER, PGHOST, POSTGRES_DB, PGADMIN_DEFAULT_PASSWORD, PGPORT
 }
