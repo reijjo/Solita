@@ -51,10 +51,52 @@ CREATE TABLE IF NOT EXISTS journey_data (
 	departure_station_name VARCHAR(255) NOT NULL,
 	return_station_id INT NOT NULL,
 	return_station_name VARCHAR(255) NOT NULL,
-	distance_m FLOAT NOT NULL,
+	distance_m INT NOT NULL,
 	duration_sec INT NOT NULL
 );
 
-COPY journey_data(departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, distance_m, duration_sec) FROM '/db/journey_data/2021-05.csv' DELIMITER ',' CSV HEADER;
-COPY journey_data(departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, distance_m, duration_sec) FROM '/db/journey_data/2021-06.csv' DELIMITER ',' CSV HEADER;
-COPY journey_data(departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, distance_m, duration_sec) FROM '/db/journey_data/2021-07.csv' DELIMITER ',' CSV HEADER;
+CREATE TABLE temp_journey_data (
+	departure TIMESTAMP NOT NULL,
+	return TIMESTAMP NOT NULL,
+	departure_station_id INT,
+	departure_station_name VARCHAR(255),
+	return_station_id INT,
+	return_station_name VARCHAR(255),
+	distance_m FLOAT,
+	duration_sec INT
+);
+
+
+COPY temp_journey_data(departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, distance_m, duration_sec) FROM '/db/journey_data/2021-05.csv' DELIMITER ',' CSV HEADER;
+
+INSERT INTO journey_data (departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, distance_m, duration_sec)
+SELECT departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, FLOOR(distance_m), duration_sec
+FROM temp_journey_data
+WHERE FLOOR(distance_m) = distance_m AND duration_sec >= 10 AND distance_m >= 10;
+
+
+COPY temp_journey_data(departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, distance_m, duration_sec) FROM '/db/journey_data/2021-06.csv' DELIMITER ',' CSV HEADER;
+
+INSERT INTO journey_data (departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, distance_m, duration_sec)
+SELECT departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, FLOOR(distance_m), duration_sec
+FROM temp_journey_data
+WHERE FLOOR(distance_m) = distance_m AND duration_sec >= 10 AND distance_m >= 10;
+
+
+COPY temp_journey_data(departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, distance_m, duration_sec) FROM '/db/journey_data/2021-07.csv' DELIMITER ',' CSV HEADER;
+
+INSERT INTO journey_data (departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, distance_m, duration_sec)
+SELECT departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, FLOOR(distance_m), duration_sec
+FROM temp_journey_data
+WHERE FLOOR(distance_m) = distance_m AND duration_sec >= 10 AND distance_m >= 10;
+
+DROP TABLE temp_journey_data;
+
+
+
+
+
+
+-- 2021-05-31T22:40:42
+-- 2021-05-31T23:34:08
+-- 2021-05-31T22:28:25

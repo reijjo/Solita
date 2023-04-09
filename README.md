@@ -29,6 +29,7 @@ https://docs.docker.com/get-docker/
 * Rename 'SOLITAenv' file in server folder to '.env'
 	* Change POSTGRES_USER, POSTGRES_PASSWORD, PGADMIN_DEFAULT_EMAIL and PGADMIN_DEFAULT_PASSWORD to whatever you want
 * Change the "Username" in db/servers.json file to same than your POSTGRES_USER in your .env file
+* Unzip all the .zip files in db/journey_data folder to the same folder
 </details>
 
 <details>
