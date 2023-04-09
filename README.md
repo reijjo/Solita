@@ -47,12 +47,12 @@ https://docs.docker.com/get-docker/
 <details>
 	<summary>Tests</summary>
 
-* Using Cypress for end to end testing for this project
-Have the app up and running
+## Using Cypress for end to end testing for this project
+### First have the app up and running
 * Running Cypress on the background
 	* Open new terminal in the frontend folder => npm run cypress:open
 	* New window pops up. Choose E2E Testing => Choose your browser (I suggest Chrome) => run the tests by clicking test file
-Or
+### Or
 * Running all the tests at once
 	* Open new terminal in the frontend folder => npm run test:e2e
 
