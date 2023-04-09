@@ -27,7 +27,7 @@ https://docs.docker.com/get-docker/
 	<summary>Configurations</summary>
 
 * Rename 'SOLITAenv' file in server folder to '.env'
-	* Change POSTGRES_USER, POSTGRES_PASSWORD, PGADMIN_DEFAULT_EMAIL and PGADMIN_DEFAULT_PASSWORD to what ever you want
+	* Change POSTGRES_USER, POSTGRES_PASSWORD, PGADMIN_DEFAULT_EMAIL and PGADMIN_DEFAULT_PASSWORD to whatever you want
 * Change the "Username" in db/servers.json file to same than your POSTGRES_USER in your .env file
 </details>
 
@@ -46,4 +46,14 @@ https://docs.docker.com/get-docker/
 
 <details>
 	<summary>Tests</summary>
+
+* Using Cypress for end to end testing for this project
+Have the app up and running
+* Running Cypress on the background
+	* Open new terminal in the frontend folder => npm run cypress:open
+	* New window pops up. Choose E2E Testing => Choose your browser (I suggest Chrome) => run the tests by clicking test file
+Or
+* Running all the tests at once
+	* Open new terminal in the frontend folder => npm run test:e2e
+
 </details>
