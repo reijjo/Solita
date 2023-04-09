@@ -42,6 +42,7 @@ services:
       - ./server/.env
     volumes:
       - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./db:/db
     ports:
       - 5432:5432
 
