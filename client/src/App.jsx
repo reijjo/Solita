@@ -9,20 +9,20 @@ import Stations from './components/Stations'
 
 const App = () => {
 	return (
-		<div className="min-h-screen wrapper bg-gradient-to-t from-blue-200 to-blue-100">
-			<Router>
-				<Header />
-				<Nav />
-				<div className='flex h-screen rounded-sm'>
-					<Routes>
-						<Route path='/' element={<Home />} />
-						<Route path='/stations' element={<Stations />} />
-						<Route path='*' element={<NotFound />} />
-					</Routes>
-					</div>
-				<Foot />
-			</Router>
-		</div>
-	)
+    <div className="flex min-h-screen flex-col bg-gradient-to-t from-blue-200 to-blue-100">
+      <Router>
+        <Header />
+        <Nav />
+        <div className="flex-grow">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/stations" element={<Stations />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </div>
+        <Foot />
+      </Router>
+    </div>
+  );
 }
 export default App;

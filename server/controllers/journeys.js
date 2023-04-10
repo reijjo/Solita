@@ -4,10 +4,10 @@ const { pool } = require('../utils/dbConnection')
 journeyRouter.get('/', async (req, res) => {
 	try {
 		const result = await pool.query(
-			`SELECT * FROM journey_data WHERE departure_station_id = $1
-			AND return_station_id = $2 AND duration_sec > 100000`,
-			[4, 65],
-		)
+      `SELECT * FROM journey_data WHERE duration_sec < 60`
+      // `SELECT * FROM journey_data WHERE departure_station_id = $1 AND return_station_id = $2 AND duration_sec < 350`,
+      // [94, 100]
+    );
 		res.json(result.rows)
 		//res.send(result)
 		//console.log(result.rows)
