@@ -75,20 +75,20 @@ FROM temp_journey_data
 WHERE FLOOR(distance_m) = distance_m AND duration_sec >= 10 AND distance_m >= 10;
 
 
-COPY temp_journey_data(departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, distance_m, duration_sec) FROM '/db/journey_data/2021-06.csv' DELIMITER ',' CSV HEADER;
+--COPY temp_journey_data(departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, distance_m, duration_sec) FROM '/db/journey_data/2021-06.csv' DELIMITER ',' CSV HEADER;
 
-INSERT INTO journey_data (departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, distance_m, duration_sec)
-SELECT departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, FLOOR(distance_m), duration_sec
-FROM temp_journey_data
-WHERE FLOOR(distance_m) = distance_m AND duration_sec >= 10 AND distance_m >= 10;
+--INSERT INTO journey_data (departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, distance_m, duration_sec)
+--SELECT departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, FLOOR(distance_m), duration_sec
+--FROM temp_journey_data
+--WHERE FLOOR(distance_m) = distance_m AND duration_sec >= 10 AND distance_m >= 10;
 
 
-COPY temp_journey_data(departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, distance_m, duration_sec) FROM '/db/journey_data/2021-07.csv' DELIMITER ',' CSV HEADER;
+--COPY temp_journey_data(departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, distance_m, duration_sec) FROM '/db/journey_data/2021-07.csv' DELIMITER ',' CSV HEADER;
 
-INSERT INTO journey_data (departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, distance_m, duration_sec)
-SELECT departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, FLOOR(distance_m), duration_sec
-FROM temp_journey_data
-WHERE FLOOR(distance_m) = distance_m AND duration_sec >= 10 AND distance_m >= 10;
+--INSERT INTO journey_data (departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, distance_m, duration_sec)
+--SELECT departure, return, departure_station_id, departure_station_name, return_station_id, return_station_name, FLOOR(distance_m), duration_sec
+--FROM temp_journey_data
+--WHERE FLOOR(distance_m) = distance_m AND duration_sec >= 10 AND distance_m >= 10;
 
 DROP TABLE temp_journey_data;
 
