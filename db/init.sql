@@ -1,4 +1,4 @@
-SET timezone = 'Europe/Helsinki';
+--SET timezone = 'Europe/Helsinki';
 
 -- Bike Stations
 
