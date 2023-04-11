@@ -17,24 +17,24 @@ const JourneyCard = ({ journeys }) => {
 	}
 
 	return (
-		<div className="p-8 m-8 bg-white journey-card rounded-2xl">
-		id: {journeys.id}
-			<div>
-				Departure Station: {journeys.departure_station_name} <br />
-				Leaving at: {formatDate(journeys.departure_time)}
-			</div>
-			<hr />
-			<div>
-				Return Station: {journeys.return_station_name} <br />
-				Returning at: {formatDate(journeys.return_time)}
-			</div>
-			<hr />
-			<div>Covered Distance: {kilometers} km</div>
-			<div>
-				Duration: {minutes}:{seconds} minutes
-			</div>
-		</div>
-	)
+    <div className="journey-card m-6 rounded-2xl bg-white p-6">
+      id: {journeys.id}
+      <div>
+        Departure Station: {journeys.departure_station_name} <br />
+        Leaving at: {formatDate(journeys.departure_time)}
+      </div>
+      <hr />
+      <div>
+        Return Station: {journeys.return_station_name} <br />
+        Returning at: {formatDate(journeys.return_time)}
+      </div>
+      <hr />
+      <div>Covered Distance: {kilometers} km</div>
+      <div>
+        Duration: {minutes}:{seconds} minutes
+      </div>
+    </div>
+  );
 }
 
 export default JourneyCard

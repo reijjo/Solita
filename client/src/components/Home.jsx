@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
-//import { format, parseISO } from "date-fns";
-
+// import InfiniteScroll from "react-infinite-scroll-component";
 import journeyService from "../services/journeys";
 import JourneyCard from "./JourneyCard";
 
@@ -31,26 +30,15 @@ const Home = () => {
     journeys.map((trip) => trip)
   );
 
-  const testTrip = journeys[0];
-
-  console.log(testTrip);
-
-		//const kilometers = testTrip ? (testTrip.distance_m / 1000).toFixed(2) : null;
-		//const minutes = testTrip ? Math.floor(testTrip.duration_sec / 60) : null;
-		//const seconds = testTrip
-		//	? String(testTrip.duration_sec % 60).padStart(2, "0")
-		//	: null
+  console.log("dataLength", journeys.length);
 
   return (
     <div className="journeys-container">
-    {/*<div className="flex flex-wrap rounded-sm text-cyan-700">*/}
-			{journeys ? (
-				journeys.map(trip => (
-					<JourneyCard key={trip.id} journeys={trip} />
-				))
-			) : (
-				<div>Loading...</div>
-			)}
+      {journeys ? (
+        journeys.map((trip) => <JourneyCard key={trip.id} journeys={trip} />)
+      ) : (
+        <div>Loading...</div>
+      )}
     </div>
   );
 };
