@@ -2,13 +2,13 @@ import axios from 'axios'
 
 const baseUrl = `http://localhost:3001/api/journeys`
 
-const getAll = async (page, limit) => {
-  const res = await axios.get(baseUrl, {
-    params: {
-      page: page,
-      limit: limit,
-    },
-  });
+// const getAll = async () => {
+//   const res = await axios.get(baseUrl);
+//   return res.data;
+// };
+
+const getAll = async (limit, offset) => {
+  const res = await axios.get(`${baseUrl}?limit=${limit}&offset=${offset}`);
   return res.data;
 };
 
