@@ -12,6 +12,25 @@ const getAll = async (limit, offset) => {
   return res.data;
 };
 
-const journeyService = { getAll }
+const getMay = async (limit, offset) => {
+  const res = await axios.get(`${baseUrl}/may?limit=${limit}&offset=${offset}`);
+  return res.data;
+};
+
+const getJune = async (limit, offset) => {
+  const res = await axios.get(
+    `${baseUrl}/june?limit=${limit}&offset=${offset}`
+  );
+  return res.data;
+};
+
+const getJuly = async (limit, offset) => {
+  const res = await axios.get(
+    `${baseUrl}/july?limit=${limit}&offset=${offset}`
+  );
+  return res.data;
+};
+
+const journeyService = { getAll, getMay, getJune, getJuly };
 
 export default journeyService

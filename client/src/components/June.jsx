@@ -1,25 +1,24 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import journeyService from "../services/journeys";
 import JourneyCard from "./JourneyCard";
-import Search from "./Search";
 import ClipLoader from "react-spinners/ClipLoader";
+import Search from "./Search";
 
-const Home = () => {
+const June = () => {
   const [journeys, setJourneys] = useState([]);
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const [initialLoad, setInitialLoad] = useState(true);
+  const limit = 25;
   // Filters
   const [distance, setDistance] = useState("");
   const [duration, setDuration] = useState("");
 
-  const limit = 25;
-
   const fetchData = async () => {
     try {
       const fetchWithDelay = async () => {
-        const data = await journeyService.getAll(limit, offset);
+        const data = await journeyService.getJune(limit, offset);
         if (data.length < limit) {
           setHasMore(false);
         }
@@ -62,11 +61,6 @@ const Home = () => {
     return filteredJourneys;
   };
 
-  console.log(
-    "nyt alkaa tapahtuu",
-    filterJourneys(journeys).map((trip) => trip)
-  );
-
   return (
     <>
       <Search
@@ -94,4 +88,4 @@ const Home = () => {
   );
 };
 
-export default Home
+export default June;

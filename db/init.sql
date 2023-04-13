@@ -96,11 +96,112 @@ ON CONFLICT DO NOTHING;
 
 DROP TABLE temp_journey_data;
 
+-- May
+
+CREATE TABLE IF NOT EXISTS may_journey_data (
+	id SERIAL NOT NULL PRIMARY KEY,
+	departure_time TIMESTAMP NOT NULL,
+	return_time TIMESTAMP NOT NULL,
+	departure_station_id INT NOT NULL,
+	departure_station_name VARCHAR(255) NOT NULL,
+	return_station_id INT NOT NULL,
+	return_station_name VARCHAR(255) NOT NULL,
+	distance_m INT NOT NULL,
+	duration_sec INT NOT NULL,
+	UNIQUE (departure_time, return_time, departure_station_id, return_station_id)
+);
+
+CREATE TABLE may_temp_journey_data (
+	departure_time TIMESTAMP NOT NULL,
+	return_time TIMESTAMP NOT NULL,
+	departure_station_id INT,
+	departure_station_name VARCHAR(255),
+	return_station_id INT,
+	return_station_name VARCHAR(255),
+	distance_m FLOAT,
+	duration_sec INT
+);
+
+COPY may_temp_journey_data(departure_time, return_time, departure_station_id, departure_station_name, return_station_id, return_station_name, distance_m, duration_sec) FROM '/db/journey_data/2021-05.csv' DELIMITER ',' CSV HEADER;
+
+INSERT INTO may_journey_data (departure_time, return_time, departure_station_id, departure_station_name, return_station_id, return_station_name, distance_m, duration_sec)
+SELECT departure_time, return_time, departure_station_id, departure_station_name, return_station_id, return_station_name, FLOOR(distance_m), duration_sec
+FROM may_temp_journey_data
+WHERE FLOOR(distance_m) = distance_m AND duration_sec >= 10 AND distance_m >= 10
+ON CONFLICT DO NOTHING;
+
+DROP TABLE may_temp_journey_data;
 
 
+-- June
+
+CREATE TABLE IF NOT EXISTS june_journey_data (
+	id SERIAL NOT NULL PRIMARY KEY,
+	departure_time TIMESTAMP NOT NULL,
+	return_time TIMESTAMP NOT NULL,
+	departure_station_id INT NOT NULL,
+	departure_station_name VARCHAR(255) NOT NULL,
+	return_station_id INT NOT NULL,
+	return_station_name VARCHAR(255) NOT NULL,
+	distance_m INT NOT NULL,
+	duration_sec INT NOT NULL,
+	UNIQUE (departure_time, return_time, departure_station_id, return_station_id)
+);
+
+CREATE TABLE june_temp_journey_data (
+	departure_time TIMESTAMP NOT NULL,
+	return_time TIMESTAMP NOT NULL,
+	departure_station_id INT,
+	departure_station_name VARCHAR(255),
+	return_station_id INT,
+	return_station_name VARCHAR(255),
+	distance_m FLOAT,
+	duration_sec INT
+);
+
+COPY june_temp_journey_data(departure_time, return_time, departure_station_id, departure_station_name, return_station_id, return_station_name, distance_m, duration_sec) FROM '/db/journey_data/2021-06.csv' DELIMITER ',' CSV HEADER;
+
+INSERT INTO june_journey_data (departure_time, return_time, departure_station_id, departure_station_name, return_station_id, return_station_name, distance_m, duration_sec)
+SELECT departure_time, return_time, departure_station_id, departure_station_name, return_station_id, return_station_name, FLOOR(distance_m), duration_sec
+FROM june_temp_journey_data
+WHERE FLOOR(distance_m) = distance_m AND duration_sec >= 10 AND distance_m >= 10
+ON CONFLICT DO NOTHING;
+
+DROP TABLE june_temp_journey_data;
 
 
+-- July
 
--- 2021-05-31T22:40:42
--- 2021-05-31T23:34:08
--- 2021-05-31T22:28:25
+CREATE TABLE IF NOT EXISTS july_journey_data (
+	id SERIAL NOT NULL PRIMARY KEY,
+	departure_time TIMESTAMP NOT NULL,
+	return_time TIMESTAMP NOT NULL,
+	departure_station_id INT NOT NULL,
+	departure_station_name VARCHAR(255) NOT NULL,
+	return_station_id INT NOT NULL,
+	return_station_name VARCHAR(255) NOT NULL,
+	distance_m INT NOT NULL,
+	duration_sec INT NOT NULL,
+	UNIQUE (departure_time, return_time, departure_station_id, return_station_id)
+);
+
+CREATE TABLE july_temp_journey_data (
+	departure_time TIMESTAMP NOT NULL,
+	return_time TIMESTAMP NOT NULL,
+	departure_station_id INT,
+	departure_station_name VARCHAR(255),
+	return_station_id INT,
+	return_station_name VARCHAR(255),
+	distance_m FLOAT,
+	duration_sec INT
+);
+
+COPY july_temp_journey_data(departure_time, return_time, departure_station_id, departure_station_name, return_station_id, return_station_name, distance_m, duration_sec) FROM '/db/journey_data/2021-07.csv' DELIMITER ',' CSV HEADER;
+
+INSERT INTO july_journey_data (departure_time, return_time, departure_station_id, departure_station_name, return_station_id, return_station_name, distance_m, duration_sec)
+SELECT departure_time, return_time, departure_station_id, departure_station_name, return_station_id, return_station_name, FLOOR(distance_m), duration_sec
+FROM july_temp_journey_data
+WHERE FLOOR(distance_m) = distance_m AND duration_sec >= 10 AND distance_m >= 10
+ON CONFLICT DO NOTHING;
+
+DROP TABLE july_temp_journey_data;
