@@ -2,17 +2,22 @@ import { Dropdown, Button } from "flowbite-react";
 import { Link } from "react-router-dom";
 
 const Search = ({
-  depStation, onSetDepStation, retStation, onSetRetStation,
-  distance, onSetDistance, duration, onSetDuration
+  depStation,
+  onSetDepStation,
+  retStation,
+  onSetRetStation,
+  distance,
+  onSetDistance,
+  duration,
+  onSetDuration,
 }) => {
-
   const handleDepStationChange = (event) => {
-    onSetDepStation(event.target.value)
-  }
+    onSetDepStation(event.target.value);
+  };
 
   const handleRetStationChange = (event) => {
-    onSetRetStation(event.target.value)
-  }
+    onSetRetStation(event.target.value);
+  };
 
   const handleDistanceChange = (event) => {
     const value = event.target.value;
@@ -24,12 +29,11 @@ const Search = ({
   };
 
   const clearAll = () => {
-    onSetDepStation('')
-    onSetRetStation('')
-    onSetDistance('')
-    onSetDuration('')
-  }
-
+    onSetDepStation("");
+    onSetRetStation("");
+    onSetDistance("");
+    onSetDuration("");
+  };
 
   return (
     <div className="flex justify-end p-6">
@@ -44,8 +48,8 @@ const Search = ({
                   <input
                     className="rounded-md"
                     type="text"
-                    name='dep_station'
-                    id='dep_station'
+                    name="dep_station"
+                    id="dep_station"
                     value={depStation}
                     onChange={handleDepStationChange}
                   />
@@ -79,7 +83,7 @@ const Search = ({
                       min="0"
                       max="10"
                       step="0.5"
-                      value={distance}
+                      value="distance"
                       onChange={handleDistanceChange}
                     />
                     <span className="ml-2">
@@ -131,7 +135,9 @@ const Search = ({
             </tbody>
           </table>
           <div className="flex items-center justify-center">
-            <Button size='xs' onClick={clearAll}>Clear All Filters</Button>
+            <Button size="xs" onClick={clearAll}>
+              Clear All Filters
+            </Button>
           </div>
         </Dropdown>
       </div>

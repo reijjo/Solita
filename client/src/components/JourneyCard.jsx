@@ -29,7 +29,7 @@ const JourneyCard = ({ journeys }) => {
   };
 
   return (
-    <div className="p-6 m-6 bg-white journey-card rounded-2xl">
+    <div className="journey-card m-6 rounded-2xl bg-white p-6">
       id: {journeys.id}
       <div className="grid-container">
         <strong>Departure Station:</strong>{" "}
@@ -50,20 +50,20 @@ const JourneyCard = ({ journeys }) => {
       {showExtra && (
         <div className="grid-container">
           <strong>Leaving at:</strong>
-					<div className="grid grid-cols-2 gap-x-1">
-          	<div>{formatDate(journeys.departure_time).time}</div>
-          	<div>{formatDate(journeys.departure_time).date}</div>
-					</div>
+          <div className="grid grid-cols-2 gap-x-1">
+            <div>{formatDate(journeys.departure_time).time}</div>
+            <div>{formatDate(journeys.departure_time).date}</div>
+          </div>
           <strong>Returning at:</strong>
-					<div className="grid grid-cols-2 gap-x-2">
-						<div>{formatDate(journeys.return_time).time}</div>
-          	<div>{formatDate(journeys.return_time).date}</div>
-					</div>
+          <div className="grid grid-cols-2 gap-x-2">
+            <div>{formatDate(journeys.return_time).time}</div>
+            <div>{formatDate(journeys.return_time).date}</div>
+          </div>
         </div>
       )}
-      <div className="mt-2 mb-2">
+      <div className="mb-2 mt-2">
         <Button size="xs" onClick={toggleDates} color="gray" className="w-auto">
-          {showExtra ? "Hide Time" : "Show Time"}
+          {showExtra ? "Show Less" : "Show More"}
         </Button>
       </div>
       <div className="flex justify-end">

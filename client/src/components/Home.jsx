@@ -13,8 +13,8 @@ const Home = () => {
   // Filters
   const [distance, setDistance] = useState("");
   const [duration, setDuration] = useState("");
-  const [depStation, setDepStation] = useState('')
-  const [retStation, setRetStation] = useState('')
+  const [depStation, setDepStation] = useState("");
+  const [retStation, setRetStation] = useState("");
 
   const limit = 40;
 
@@ -49,18 +49,28 @@ const Home = () => {
   }, []);
 
   const filterJourneys = (journeys) => {
-    let filteredJourneys = journeys
+    let filteredJourneys = journeys;
 
-    if (depStation !== '' && depStation.length > 2) {
-      filteredJourneys = filteredJourneys.filter((trip) => trip.departure_station_name.toLowerCase().includes(depStation.toLowerCase()))
+    if (depStation !== "" && depStation.length > 2) {
+      filteredJourneys = filteredJourneys.filter((trip) =>
+        trip.departure_station_name
+          .toLowerCase()
+          .includes(depStation.toLowerCase())
+      );
     }
 
-    if (retStation !== '' &&  retStation.length > 2) {
-      filteredJourneys = filteredJourneys.filter((trip) => trip.return_station_name.toLowerCase().includes(retStation.toLowerCase()))
+    if (retStation !== "" && retStation.length > 2) {
+      filteredJourneys = filteredJourneys.filter((trip) =>
+        trip.return_station_name
+          .toLowerCase()
+          .includes(retStation.toLowerCase())
+      );
     }
 
-    if (distance !== '') {
-      filteredJourneys = filteredJourneys.filter((trip) => trip.distance_m < distance * 1000)
+    if (distance !== "") {
+      filteredJourneys = filteredJourneys.filter(
+        (trip) => trip.distance_m < distance * 1000
+      );
     }
 
     if (duration === "min-duration") {
@@ -75,6 +85,8 @@ const Home = () => {
     "nyt alkaa tapahtuu",
     filterJourneys(journeys).map((trip) => trip)
   );
+
+  console.log("duration", duration);
 
 
   return (

@@ -9,6 +9,7 @@ import July from "./components/July";
 import NotFound from "./components/NotFound";
 import Foot from "./components/Footer";
 import Stations from "./components/Stations";
+import DiffStations from "./components/DiffStations";
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
             <Route path="/june" element={<June />} />
             <Route path="/july" element={<July />} />
             <Route path="/stations" element={<Stations />} />
+            <Route path="/diffst" element={<DiffStations />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
