@@ -22,11 +22,14 @@ const JourneyCard = ({ journeys }) => {
     const minutes = String(dateObj.getUTCMinutes()).padStart(2, "0");
     const seconds = String(dateObj.getUTCSeconds()).padStart(2, "0");
 
-    return `${hours}:${minutes}:${seconds} ${day}/${month}/${year} `;
+    return {
+			time: `${hours}:${minutes}:${seconds}`,
+			date: `${day}/${month}/${year} `
+		}
   };
 
   return (
-    <div className="journey-card m-6 rounded-2xl bg-white p-6">
+    <div className="p-6 m-6 bg-white journey-card rounded-2xl">
       id: {journeys.id}
       <div className="grid-container">
         <strong>Departure Station:</strong>{" "}
@@ -47,12 +50,18 @@ const JourneyCard = ({ journeys }) => {
       {showExtra && (
         <div className="grid-container">
           <strong>Leaving at:</strong>
-          <div>{formatDate(journeys.departure_time)}</div>
+					<div className="grid grid-cols-2 gap-x-1">
+          	<div>{formatDate(journeys.departure_time).time}</div>
+          	<div>{formatDate(journeys.departure_time).date}</div>
+					</div>
           <strong>Returning at:</strong>
-          <div>{formatDate(journeys.return_time)}</div>
+					<div className="grid grid-cols-2 gap-x-2">
+						<div>{formatDate(journeys.return_time).time}</div>
+          	<div>{formatDate(journeys.return_time).date}</div>
+					</div>
         </div>
       )}
-      <div className="mb-2 mt-2">
+      <div className="mt-2 mb-2">
         <Button size="xs" onClick={toggleDates} color="gray" className="w-auto">
           {showExtra ? "Hide Time" : "Show Time"}
         </Button>

@@ -1,9 +1,18 @@
 import { Dropdown, Button } from "flowbite-react";
 import { Link } from "react-router-dom";
 
-const Search = ({ distance, onSetDistance, duration, onSetDuration }) => {
-  // const [distance, setDistance] = useState("");
-  // const [duration, setDuration] = useState("");
+const Search = ({
+  depStation, onSetDepStation, retStation, onSetRetStation,
+  distance, onSetDistance, duration, onSetDuration
+}) => {
+
+  const handleDepStationChange = (event) => {
+    onSetDepStation(event.target.value)
+  }
+
+  const handleRetStationChange = (event) => {
+    onSetRetStation(event.target.value)
+  }
 
   const handleDistanceChange = (event) => {
     const value = event.target.value;
@@ -14,7 +23,13 @@ const Search = ({ distance, onSetDistance, duration, onSetDuration }) => {
     onSetDuration(event.target.value);
   };
 
-  console.log("Duration", duration);
+  const clearAll = () => {
+    onSetDepStation('')
+    onSetRetStation('')
+    onSetDistance('')
+    onSetDuration('')
+  }
+
 
   return (
     <div className="flex justify-end p-6">
@@ -26,14 +41,28 @@ const Search = ({ distance, onSetDistance, duration, onSetDuration }) => {
               <tr>
                 <td className="p-2">Departure Station:</td>
                 <td className="p-2">
-                  <input className="rounded-md" type="text" />
+                  <input
+                    className="rounded-md"
+                    type="text"
+                    name='dep_station'
+                    id='dep_station'
+                    value={depStation}
+                    onChange={handleDepStationChange}
+                  />
                 </td>
               </tr>
               {/* Return Station */}
               <tr>
                 <td className="p-2">Return Station:</td>
                 <td className="p-2">
-                  <input className="rounded-md" type="text" />
+                  <input
+                    className="rounded-md"
+                    type="text"
+                    name="ret_station"
+                    id="ret_station"
+                    value={retStation}
+                    onChange={handleRetStationChange}
+                  />
                 </td>
               </tr>
               {/* Distance */}
@@ -50,6 +79,7 @@ const Search = ({ distance, onSetDistance, duration, onSetDuration }) => {
                       min="0"
                       max="10"
                       step="0.5"
+                      value={distance}
                       onChange={handleDistanceChange}
                     />
                     <span className="ml-2">
@@ -100,6 +130,9 @@ const Search = ({ distance, onSetDistance, duration, onSetDuration }) => {
               </tr>
             </tbody>
           </table>
+          <div className="flex items-center justify-center">
+            <Button size='xs' onClick={clearAll}>Clear All Filters</Button>
+          </div>
         </Dropdown>
       </div>
       <div className="ml-6">

@@ -13,8 +13,10 @@ const Home = () => {
   // Filters
   const [distance, setDistance] = useState("");
   const [duration, setDuration] = useState("");
+  const [depStation, setDepStation] = useState('')
+  const [retStation, setRetStation] = useState('')
 
-  const limit = 25;
+  const limit = 40;
 
   const fetchData = async () => {
     try {
@@ -46,13 +48,20 @@ const Home = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log("dataLength", journeys.length);
-
   const filterJourneys = (journeys) => {
-    let filteredJourneys =
-      distance === ""
-        ? journeys
-        : journeys.filter((trip) => trip.distance_m <= distance * 1000);
+    let filteredJourneys = journeys
+
+    if (depStation !== '' && depStation.length > 2) {
+      filteredJourneys = filteredJourneys.filter((trip) => trip.departure_station_name.toLowerCase().includes(depStation.toLowerCase()))
+    }
+
+    if (retStation !== '' &&  retStation.length > 2) {
+      filteredJourneys = filteredJourneys.filter((trip) => trip.return_station_name.toLowerCase().includes(retStation.toLowerCase()))
+    }
+
+    if (distance !== '') {
+      filteredJourneys = filteredJourneys.filter((trip) => trip.distance_m < distance * 1000)
+    }
 
     if (duration === "min-duration") {
       filteredJourneys.sort((a, b) => a.duration_sec - b.duration_sec);
@@ -67,9 +76,14 @@ const Home = () => {
     filterJourneys(journeys).map((trip) => trip)
   );
 
+
   return (
     <>
       <Search
+        depStation={depStation}
+        onSetDepStation={setDepStation}
+        retStation={retStation}
+        onSetRetStation={setRetStation}
         distance={distance}
         onSetDistance={setDistance}
         duration={duration}
