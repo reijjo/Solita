@@ -1,13 +1,12 @@
 import { Navbar, Button } from "flowbite-react";
-
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { Link } from "react-router-dom";
 import ClipLoader from "react-spinners/ClipLoader";
 import stationService from "../services/stations";
-import StationCard from "./StationCard";
+import DiffCard from "./StationCard";
 
-const Stations = () => {
+const Helsinki = () => {
   const [stations, setStations] = useState([]);
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
@@ -18,7 +17,7 @@ const Stations = () => {
   const fetchData = async () => {
     try {
       const fetchWithDelay = async () => {
-        const data = await stationService.getAll(limit, offset);
+        const data = await stationService.getHelsinki(limit, offset);
         if (data.length < limit) {
           setHasMore(false);
         }
@@ -81,7 +80,7 @@ const Stations = () => {
         <div className="journeys-container">
           {stations.length > 0
             ? stations.map((station) => (
-                <StationCard key={station.fid} stations={station} />
+                <DiffCard key={station.fid} stations={station} />
               ))
             : null}
         </div>
@@ -90,4 +89,4 @@ const Stations = () => {
   );
 };
 
-export default Stations;
+export default Helsinki;

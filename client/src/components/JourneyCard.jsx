@@ -1,5 +1,6 @@
 import { Button } from "flowbite-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const JourneyCard = ({ journeys }) => {
   const [showExtra, setShowExtra] = useState(false);
@@ -33,9 +34,23 @@ const JourneyCard = ({ journeys }) => {
       id: {journeys.id}
       <div className="grid-container">
         <strong>Departure Station:</strong>{" "}
-        <div>{journeys.departure_station_name} </div>
+        <div>
+          <Link
+            key={journeys.departure_station_id}
+            to={`/stations/info/${journeys.departure_station_id}`}
+          >
+            {journeys.departure_station_name}
+          </Link>
+        </div>
         <strong>Return Station:</strong>{" "}
-        <div>{journeys.return_station_name}</div>
+        <div>
+          <Link
+            key={journeys.return_station_id}
+            to={`/stations/info/${journeys.return_station_id}`}
+          >
+            {journeys.return_station_name}
+          </Link>
+        </div>
       </div>
       <hr />
       <div className="grid-container">
