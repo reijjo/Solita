@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ClipLoader from "react-spinners/ClipLoader";
-import stationService from "../services/stations";
+import stationService from "../../services/stations";
 import DiffCard from "./StationCard";
 
 const Helsinki = () => {

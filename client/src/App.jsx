@@ -2,23 +2,23 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import Header from './components/Header'
 import Nav from './components/Navbar'
-import Home from './components/Home'
-import May from "./components/May";
-import June from "./components/June";
-import July from "./components/July";
+import Home from './components/journeys/Home'
+import May from "./components/journeys/May";
+import June from "./components/journeys/June";
+import July from "./components/journeys/July";
 import NotFound from "./components/NotFound";
 import Foot from "./components/Footer";
-import Stations from "./components/Stations";
-import Espoo from "./components/Espoo";
-import Helsinki from "./components/Helsinki";
-import StationInfo from "./components/StationInfo";
-import StationInfoMay from "./components/StationInfoMay";
-import StationInfoJune from "./components/StationInfoJune";
-import StationInfoJuly from "./components/StationInfoJuly";
+import Stations from "./components/stations/Stations";
+import Espoo from "./components/stations/Espoo";
+import Helsinki from "./components/stations/Helsinki";
+import StationInfo from "./components/stations/StationInfo";
+import StationInfoMay from "./components/stations/StationInfoMay";
+import StationInfoJune from "./components/stations/StationInfoJune";
+import StationInfoJuly from "./components/stations/StationInfoJuly";
 
 const App = () => {
   return (
-    <div className="flex min-h-screen flex-col bg-gradient-to-t from-blue-200 to-blue-100">
+    <div className="flex flex-col min-h-screen bg-gradient-to-t from-blue-200 to-blue-100">
       <Router>
         <Header />
         <Nav />

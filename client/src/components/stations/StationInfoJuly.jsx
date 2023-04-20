@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useParams, Link, useLocation } from "react-router-dom";
-import stationService from "../services/stations";
+import stationService from "../../services/stations";
 
-const StationInfoMay = () => {
+const StationInfoJuly = () => {
   const { id } = useParams();
   const [info, setInfo] = useState({});
   const [departures, setDepartures] = useState("");
@@ -15,13 +15,13 @@ const StationInfoMay = () => {
       const result = await stationService.getStation(id);
       if (result.id) {
         setInfo(result);
-        const result2 = await stationService.getAllDepartures(id);
+        const result2 = await stationService.getJulyDepartures(id);
         setDepartures(result2);
-        const result3 = await stationService.getMayReturns(id);
+        const result3 = await stationService.getJulyReturns(id);
         setReturns(result3);
-        const result4 = await stationService.getAllTopReturns(id);
+        const result4 = await stationService.getJulyTopReturns(id);
         setTop5returns(result4);
-        const result5 = await stationService.getAllTopDepart(id);
+        const result5 = await stationService.getJulyTopDepart(id);
         setTop5depart(result5);
       } else {
         window.location.replace("/");
@@ -43,15 +43,15 @@ const StationInfoMay = () => {
   console.log("top5depart", top5depart);
   return (
     <>
-      <div className="journey-container flex flex-col items-center justify-center">
-        <div className="m-4 flex min-h-screen justify-start rounded-md bg-white p-6 shadow">
+      <div className="flex flex-col items-center justify-center journey-container">
+        <div className="flex justify-start min-h-screen p-6 m-4 bg-white rounded-md shadow">
           <div>
             <div className="text-xl">
               {/* <div className="text-sm">Station id {info.id} </div> */}
               <strong>{info.nimi}</strong>
               <div>{info.namn}</div>
               <div>{info.name_eng}</div>
-              <div className="aspect-w-1 aspect-h-1 h-36 w-full border border-gray-400"></div>
+              <div className="w-full border border-gray-400 aspect-w-1 aspect-h-1 h-36"></div>
               <div>
                 {info.osoite}, {info.kaupunki}
               </div>
@@ -60,24 +60,24 @@ const StationInfoMay = () => {
               </div>
               <hr className="m-2" />
             </div>
-            <div className="m-2 flex justify-between">
+            <div className="flex justify-between m-2">
               <Link to={`/stations/info/${info.id}`}>
                 <div>All</div>
               </Link>
-              <Link
-                to={`/stations/info/may/${info.id}`}
-                className={
-                  isActiveLink(`/stations/info/may/${info.id}`)
-                    ? "font-bold text-blue-600"
-                    : "text-gray-600"
-                }
-              >
+              <Link to={`/stations/info/may/${info.id}`}>
                 <div>May</div>
               </Link>
               <Link to={`/stations/info/june/${info.id}`}>
                 <div>June</div>
               </Link>
-              <Link to={`/stations/info/july/${info.id}`}>
+              <Link
+                to={`/stations/info/july/${info.id}`}
+                className={
+                  isActiveLink(`/stations/info/july/${info.id}`)
+                    ? "font-bold text-blue-600"
+                    : "text-gray-600"
+                }
+              >
                 <div>July</div>
               </Link>
             </div>
@@ -119,4 +119,4 @@ const StationInfoMay = () => {
   );
 };
 
-export default StationInfoMay;
+export default StationInfoJuly;

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ClipLoader from "react-spinners/ClipLoader";
-import stationService from "../services/stations";
+import stationService from "../../services/stations";
 import DiffCard from "./StationCard";
 
 const Espoo = () => {
@@ -46,7 +46,7 @@ const Espoo = () => {
 
   return (
     <>
-      <div className="m-2 flex flex-wrap items-center justify-center p-2">
+      <div className="flex flex-wrap items-center justify-center p-2 m-2">
         <Navbar
           fluid={true}
           //rounded={true}
@@ -54,17 +54,17 @@ const Espoo = () => {
         >
           <Navbar.Toggle />
           <Navbar.Collapse>
-            <Button className="my-2 p-2 transition-colors duration-200 hover:text-green-500">
+            <Button className="p-2 my-2 transition-colors duration-200 hover:text-green-500">
               <Link to="/stations">All</Link>
             </Button>
-            <Button className="my-2 p-2 transition-colors duration-200 hover:text-green-500">
+            <Button className="p-2 my-2 transition-colors duration-200 hover:text-green-500">
               <Link to="/stations/espoo">Espoo</Link>
             </Button>
-            <Button className="my-2 p-2 transition-colors duration-200 hover:text-green-500">
+            <Button className="p-2 my-2 transition-colors duration-200 hover:text-green-500">
               <Link to="/stations/helsinki">Helsinki</Link>
             </Button>
             <input
-              className="my-2 rounded-xl p-2"
+              className="p-2 my-2 rounded-xl"
               type="text"
               placeholder="Search station..."
             />

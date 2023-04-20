@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"
 import InfiniteScroll from "react-infinite-scroll-component";
-import journeyService from "../services/journeys";
+import journeyService from "../../services/journeys";
 import JourneyCard from "./JourneyCard";
 import Search from "./Search";
 import ClipLoader from "react-spinners/ClipLoader";
 
-const May = () => {
+const Home = () => {
   const [journeys, setJourneys] = useState([]);
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
@@ -21,7 +21,7 @@ const May = () => {
   const fetchData = async () => {
     try {
       const fetchWithDelay = async () => {
-        const data = await journeyService.getMay(limit, offset);
+        const data = await journeyService.getAll(limit, offset);
         if (data.length < limit) {
           setHasMore(false);
         }
@@ -83,10 +83,11 @@ const May = () => {
 
   console.log(
     "nyt alkaa tapahtuu",
-    journeys.map((trip) => trip)
+    filterJourneys(journeys).map((trip) => trip)
   );
 
-  console.log("dataLength", journeys.length);
+  console.log("duration", duration);
+
 
   return (
     <>
@@ -100,6 +101,7 @@ const May = () => {
         duration={duration}
         onSetDuration={setDuration}
       />
+
       <InfiniteScroll
         dataLength={filterJourneys(journeys).length}
         next={fetchData}
@@ -118,4 +120,4 @@ const May = () => {
   );
 };
 
-export default May;
+export default Home

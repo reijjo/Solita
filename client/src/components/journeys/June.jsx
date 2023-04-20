@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import journeyService from "../services/journeys";
+import journeyService from "../../services/journeys";
 import JourneyCard from "./JourneyCard";
 import ClipLoader from "react-spinners/ClipLoader";
 import Search from "./Search";

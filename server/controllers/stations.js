@@ -68,12 +68,102 @@ stationRouter.get("/info/departures/all/:id", async (req, res) => {
   }
 });
 
+stationRouter.get("/info/departures/may/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await pool.query(
+      `SELECT COUNT(*) FROM may_journey_data WHERE departure_station_id = $1`,
+      [id]
+    );
+    res.json(result.rows[0].count);
+  } catch (error) {
+    console.error("Error fetching departure count", error);
+  }
+});
+
+stationRouter.get("/info/departures/june/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await pool.query(
+      `SELECT COUNT(*) FROM june_journey_data WHERE departure_station_id = $1`,
+      [id]
+    );
+    res.json(result.rows[0].count);
+  } catch (error) {
+    console.error("Error fetching departure count", error);
+  }
+});
+
+stationRouter.get("/info/departures/july/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await pool.query(
+      `SELECT COUNT(*) FROM july_journey_data WHERE departure_station_id = $1`,
+      [id]
+    );
+    res.json(result.rows[0].count);
+  } catch (error) {
+    console.error("Error fetching departure count", error);
+  }
+});
+
 stationRouter.get("/info/departures/all/top/:id", async (req, res) => {
   const { id } = req.params;
   try {
     const result = await pool.query(
       `
 			SELECT departure_station_name, departure_station_id, COUNT(*) as num_returns FROM journey_data
+			WHERE return_station_id = $1 GROUP BY departure_station_id, departure_station_name
+			ORDER BY num_returns DESC LIMIT 5
+		`,
+      [id]
+    );
+    res.json(result.rows);
+  } catch (error) {
+    console.error("Error fetching top 5 ends", error);
+  }
+});
+
+stationRouter.get("/info/departures/may/top/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await pool.query(
+      `
+			SELECT departure_station_name, departure_station_id, COUNT(*) as num_returns FROM may_journey_data
+			WHERE return_station_id = $1 GROUP BY departure_station_id, departure_station_name
+			ORDER BY num_returns DESC LIMIT 5
+		`,
+      [id]
+    );
+    res.json(result.rows);
+  } catch (error) {
+    console.error("Error fetching top 5 ends", error);
+  }
+});
+
+stationRouter.get("/info/departures/june/top/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await pool.query(
+      `
+			SELECT departure_station_name, departure_station_id, COUNT(*) as num_returns FROM june_journey_data
+			WHERE return_station_id = $1 GROUP BY departure_station_id, departure_station_name
+			ORDER BY num_returns DESC LIMIT 5
+		`,
+      [id]
+    );
+    res.json(result.rows);
+  } catch (error) {
+    console.error("Error fetching top 5 ends", error);
+  }
+});
+
+stationRouter.get("/info/departures/july/top/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await pool.query(
+      `
+			SELECT departure_station_name, departure_station_id, COUNT(*) as num_returns FROM july_journey_data
 			WHERE return_station_id = $1 GROUP BY departure_station_id, departure_station_name
 			ORDER BY num_returns DESC LIMIT 5
 		`,
@@ -144,6 +234,51 @@ stationRouter.get("/info/returns/all/top/:id", async (req, res) => {
   try {
     const result = await pool.query(
       `SELECT return_station_name, return_station_id, COUNT(*) as num_returns FROM journey_data
+			WHERE departure_station_id = $1 GROUP BY return_station_id, return_station_name
+			ORDER BY num_returns DESC LIMIT 5`,
+      [id]
+    );
+    res.json(result.rows);
+  } catch (error) {
+    console.error("Error fetching top 5 returns", error);
+  }
+});
+
+stationRouter.get("/info/returns/may/top/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await pool.query(
+      `SELECT return_station_name, return_station_id, COUNT(*) as num_returns FROM may_journey_data
+			WHERE departure_station_id = $1 GROUP BY return_station_id, return_station_name
+			ORDER BY num_returns DESC LIMIT 5`,
+      [id]
+    );
+    res.json(result.rows);
+  } catch (error) {
+    console.error("Error fetching top 5 returns", error);
+  }
+});
+
+stationRouter.get("/info/returns/june/top/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await pool.query(
+      `SELECT return_station_name, return_station_id, COUNT(*) as num_returns FROM june_journey_data
+			WHERE departure_station_id = $1 GROUP BY return_station_id, return_station_name
+			ORDER BY num_returns DESC LIMIT 5`,
+      [id]
+    );
+    res.json(result.rows);
+  } catch (error) {
+    console.error("Error fetching top 5 returns", error);
+  }
+});
+
+stationRouter.get("/info/returns/july/top/:id", async (req, res) => {
+  const { id } = req.params;
+  try {
+    const result = await pool.query(
+      `SELECT return_station_name, return_station_id, COUNT(*) as num_returns FROM july_journey_data
 			WHERE departure_station_id = $1 GROUP BY return_station_id, return_station_name
 			ORDER BY num_returns DESC LIMIT 5`,
       [id]

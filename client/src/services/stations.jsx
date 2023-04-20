@@ -26,10 +26,30 @@ const getHelsinki = async (limit, offset) => {
   return res.data;
 };
 
+// DEPARTURES
+
 const getAllDepartures = async (id) => {
   const res = await axios.get(`${baseUrl}/info/departures/all/${id}`);
   return res.data;
 };
+
+const getMayDepartures = async (id) => {
+  const res = await axios.get(`${baseUrl}/info/departures/may/${id}`);
+  return res.data;
+};
+
+const getJuneDepartures = async (id) => {
+  const res = await axios.get(`${baseUrl}/info/departures/june/${id}`);
+  return res.data;
+};
+
+const getJulyDepartures = async (id) => {
+  const res = await axios.get(`${baseUrl}/info/departures/july/${id}`);
+  return res.data;
+};
+
+
+// RETURNS
 
 const getAllReturns = async (id) => {
   const res = await axios.get(`${baseUrl}/info/returns/all/${id}`);
@@ -56,8 +76,38 @@ const getAllTopReturns = async (id) => {
   return res.data;
 };
 
+const getMayTopReturns = async (id) => {
+  const res = await axios.get(`${baseUrl}/info/returns/may/top/${id}`);
+  return res.data;
+};
+
+const getJuneTopReturns = async (id) => {
+  const res = await axios.get(`${baseUrl}/info/returns/june/top/${id}`);
+  return res.data;
+};
+
+const getJulyTopReturns = async (id) => {
+  const res = await axios.get(`${baseUrl}/info/returns/july/top/${id}`);
+  return res.data;
+};
+
 const getAllTopDepart = async (id) => {
   const res = await axios.get(`${baseUrl}/info/departures/all/top/${id}`);
+  return res.data;
+};
+
+const getMayTopDepart = async (id) => {
+  const res = await axios.get(`${baseUrl}/info/departures/may/top/${id}`);
+  return res.data;
+};
+
+const getJuneTopDepart = async (id) => {
+  const res = await axios.get(`${baseUrl}/info/departures/june/top/${id}`);
+  return res.data;
+};
+
+const getJulyTopDepart = async (id) => {
+  const res = await axios.get(`${baseUrl}/info/departures/july/top/${id}`);
   return res.data;
 };
 
@@ -67,12 +117,21 @@ const stationService = {
   getEspoo,
   getHelsinki,
   getAllDepartures,
+  getMayDepartures,
+  getJuneDepartures,
+  getJulyDepartures,
   getAllReturns,
   getMayReturns,
   getJuneReturns,
   getJulyReturns,
   getAllTopReturns,
+  getMayTopReturns,
+  getJuneTopReturns,
+  getJulyTopReturns,
   getAllTopDepart,
+  getMayTopDepart,
+  getJuneTopDepart,
+  getJulyTopDepart
 };
 
 export default stationService;

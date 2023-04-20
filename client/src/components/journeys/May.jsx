@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import journeyService from "../services/journeys";
+import journeyService from "../../services/journeys";
 import JourneyCard from "./JourneyCard";
-import ClipLoader from "react-spinners/ClipLoader";
 import Search from "./Search";
+import ClipLoader from "react-spinners/ClipLoader";
 
-const July = () => {
+const May = () => {
   const [journeys, setJourneys] = useState([]);
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
@@ -21,7 +21,7 @@ const July = () => {
   const fetchData = async () => {
     try {
       const fetchWithDelay = async () => {
-        const data = await journeyService.getJuly(limit, offset);
+        const data = await journeyService.getMay(limit, offset);
         if (data.length < limit) {
           setHasMore(false);
         }
@@ -47,8 +47,6 @@ const July = () => {
     fetchData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  console.log("dataLength", journeys.length);
 
   const filterJourneys = (journeys) => {
     let filteredJourneys = journeys;
@@ -85,8 +83,10 @@ const July = () => {
 
   console.log(
     "nyt alkaa tapahtuu",
-    filterJourneys(journeys).map((trip) => trip)
+    journeys.map((trip) => trip)
   );
+
+  console.log("dataLength", journeys.length);
 
   return (
     <>
@@ -100,7 +100,6 @@ const July = () => {
         duration={duration}
         onSetDuration={setDuration}
       />
-
       <InfiniteScroll
         dataLength={filterJourneys(journeys).length}
         next={fetchData}
@@ -119,4 +118,4 @@ const July = () => {
   );
 };
 
-export default July;
+export default May;
