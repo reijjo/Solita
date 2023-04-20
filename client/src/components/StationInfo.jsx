@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import stationService from "../services/stations";
 
 const StationInfo = () => {
@@ -30,6 +30,12 @@ const StationInfo = () => {
     fetchData(id);
   }, [id]);
 
+  const location = useLocation();
+
+  const isActiveLink = (path) => {
+    return location.pathname === path;
+  };
+
   console.log("INFO", info);
   console.log("Dep", departures);
   console.log("Ret", returns);
@@ -55,7 +61,14 @@ const StationInfo = () => {
               <hr className="m-2" />
             </div>
             <div className="m-2 flex justify-between">
-              <Link to={`/stations/info/${info.id}`}>
+              <Link
+                to={`/stations/info/${info.id}`}
+                className={
+                  isActiveLink(`/stations/info/${info.id}`)
+                    ? "font-bold text-blue-600"
+                    : "text-gray-600"
+                }
+              >
                 <div>All</div>
               </Link>
               <Link to={`/stations/info/may/${info.id}`}>

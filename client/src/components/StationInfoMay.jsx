@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useLocation } from "react-router-dom";
 import stationService from "../services/stations";
 
 const StationInfoMay = () => {
@@ -30,6 +30,12 @@ const StationInfoMay = () => {
     fetchData(id);
   }, [id]);
 
+  const location = useLocation();
+
+  const isActiveLink = (path) => {
+    return location.pathname === path;
+  };
+
   console.log("INFO", info);
   console.log("Dep", departures);
   console.log("Ret", returns);
@@ -58,7 +64,14 @@ const StationInfoMay = () => {
               <Link to={`/stations/info/${info.id}`}>
                 <div>All</div>
               </Link>
-              <Link to={`/stations/info/may/${info.id}`}>
+              <Link
+                to={`/stations/info/may/${info.id}`}
+                className={
+                  isActiveLink(`/stations/info/may/${info.id}`)
+                    ? "font-bold text-blue-600"
+                    : "text-gray-600"
+                }
+              >
                 <div>May</div>
               </Link>
               <Link to={`/stations/info/june/${info.id}`}>
