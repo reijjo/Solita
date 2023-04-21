@@ -29,6 +29,21 @@ https://docs.docker.com/get-docker/
 * Rename 'SOLITAenv' file in server folder to '.env'
 	* Change POSTGRES_USER, POSTGRES_PASSWORD, PGADMIN_DEFAULT_EMAIL and PGADMIN_DEFAULT_PASSWORD to whatever you want
 * Change the "Username" in db/servers.json file to same than your POSTGRES_USER in your .env file
+* Insert your Google Maps Api Key in FRONTENV file in your client folder and rename 'FRONTENV' to '.env'
+	
+<details>
+	<summary> To obtain a Google Maps API key, you need to follow these steps: </summary>
+	
+* Go to the Google Cloud Console (https://console.cloud.google.com/).
+* If you don't have a project yet, create one by clicking the "Select a Project" dropdown menu and then clicking the "New Project" button.
+* Once you have a project, click on the project name to go to the project dashboard.
+* In the left sidebar, click on "APIs & Services" and then "Credentials."
+* On the Credentials page, click on "Create credentials" and select "API key."
+* Copy the API key from the "API keys" section.
+* Note that you may need to enable the Google Maps API for your project before you can create an API key. You can do this by clicking on the "Library" tab in the "APIs & Services" section and searching for the Google Maps API you want to use (e.g. "Maps JavaScript API," "Places API," etc.). Once you find the API, click on it and then click the "Enable" button.
+	</details>
+
+Also, keep in mind that some APIs may require billing information and a payment method to be set up before you can use them.
 * Unzip all the .zip files in db/journey_data folder to the same folder
 </details>
 
