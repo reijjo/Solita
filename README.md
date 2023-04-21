@@ -29,7 +29,8 @@ https://docs.docker.com/get-docker/
 * Rename 'SOLITAenv' file in server folder to '.env'
 	* Change POSTGRES_USER, POSTGRES_PASSWORD, PGADMIN_DEFAULT_EMAIL and PGADMIN_DEFAULT_PASSWORD to whatever you want
 * Change the "Username" in db/servers.json file to same than your POSTGRES_USER in your .env file
-* Insert your Google Maps Api in .env file
+* Insert your Google Maps Api Key in FRONTENV file in your client folder and rename 'FRONTENV' to '.env'
+	
 <details>
 	<summary> To obtain a Google Maps API key, you need to follow these steps: </summary>
 	
