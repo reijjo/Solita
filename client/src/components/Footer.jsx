@@ -5,7 +5,7 @@ const Foot = () => {
     <Footer container={true} className="nav-custom-bg rounded-none bg-center">
       <Footer.LinkGroup>
         <Footer.Link href="http://www.github.com/reijjo">
-          Worth Clicking?
+          github/reijjo
         </Footer.Link>
       </Footer.LinkGroup>
       <Footer.Copyright

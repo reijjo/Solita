@@ -12,6 +12,8 @@ const Stations = () => {
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const [initialLoad, setInitialLoad] = useState(true);
+	const [searchQuery, setSearchQuery] = useState("");
+  const [searchResult, setSearchResult] = useState([]);
 
   const limit = 100;
 
@@ -45,9 +47,30 @@ const Stations = () => {
 
   console.log("STATIONS", stations);
 
+  const searchStations = async (query) => {
+    try {
+      const results = await stationService.searchAll(query);
+      console.log("searchRESULT", searchResult);
+      setSearchResult(results);
+    } catch (error) {
+      console.error("Error searching stations", error);
+    }
+  };
+
+  const handleSearch = (event) => {
+    const query = event.target.value;
+    setSearchQuery(query);
+
+    if (query.length > 2) {
+      searchStations(query);
+    } else {
+      setSearchResult([]);
+    }
+  };
+
   return (
     <>
-      <div className="flex flex-wrap items-center justify-center p-2 m-2">
+      <div className="m-2 flex flex-wrap items-center justify-center p-2">
         <Navbar
           fluid={true}
           //rounded={true}
@@ -55,31 +78,39 @@ const Stations = () => {
         >
           <Navbar.Toggle />
           <Navbar.Collapse>
-            <Button className="p-2 my-2 transition-colors duration-200 hover:text-green-500">
+            <Button className="my-2 p-2 transition-colors duration-200 hover:text-green-500">
               <Link to="/stations">All</Link>
             </Button>
-            <Button className="p-2 my-2 transition-colors duration-200 hover:text-green-500">
+            <Button className="my-2 p-2 transition-colors duration-200 hover:text-green-500">
               <Link to="/stations/espoo">Espoo</Link>
             </Button>
-            <Button className="p-2 my-2 transition-colors duration-200 hover:text-green-500">
+            <Button className="my-2 p-2 transition-colors duration-200 hover:text-green-500">
               <Link to="/stations/helsinki">Helsinki</Link>
             </Button>
             <input
-              className="p-2 my-2 rounded-xl"
+              className="my-2 rounded-xl p-2"
               type="text"
               placeholder="Search station..."
+              value={searchQuery}
+              onChange={handleSearch}
             />
           </Navbar.Collapse>
         </Navbar>
       </div>
       <InfiniteScroll
-        dataLength={stations.length}
+        dataLength={
+          searchQuery.length > 2 ? searchResult.length : stations.length
+        }
         next={fetchData}
         hasMore={hasMore}
         loader={<ClipLoader className="reactspinner" />}
       >
         <div className="journeys-container">
-          {stations.length > 0
+          {searchQuery.length > 2
+            ? searchResult.map((station) => (
+                <StationCard key={station.fid} stations={station} />
+              ))
+            : stations.length > 0
             ? stations.map((station) => (
                 <StationCard key={station.fid} stations={station} />
               ))

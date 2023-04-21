@@ -111,6 +111,23 @@ const getJulyTopDepart = async (id) => {
   return res.data;
 };
 
+// SEARCH
+
+const searchAll = async (query) => {
+	const res = await axios.get(`${baseUrl}/search/all?q=${query}`)
+	return res.data
+}
+
+const searchEspoo = async (query) => {
+	const res = await axios.get(`${baseUrl}/search/espoo?q=${query}`)
+	return res.data
+}
+
+const searchHelsinki = async (query) => {
+	const res = await axios.get(`${baseUrl}/search/helsinki?q=${query}`)
+	return res.data
+}
+
 const stationService = {
   getAll,
   getStation,
@@ -131,7 +148,10 @@ const stationService = {
   getAllTopDepart,
   getMayTopDepart,
   getJuneTopDepart,
-  getJulyTopDepart
+  getJulyTopDepart,
+  searchAll,
+  searchEspoo,
+  searchHelsinki,
 };
 
 export default stationService;

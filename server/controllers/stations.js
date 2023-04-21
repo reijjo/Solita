@@ -289,6 +289,54 @@ stationRouter.get("/info/returns/july/top/:id", async (req, res) => {
   }
 });
 
+// SEARCH STATIONS
+
+stationRouter.get('/search/all', async (req, res) => {
+	const searchQuery = req.query.q
+	console.log(searchQuery)
+
+	try {
+		const result = await pool.query(`
+			SELECT * FROM bike_stations WHERE (Nimi ILIKE $1 OR Namn ILIKE $1 OR Name_eng ILIKE $1)
+		`,
+		[`%${searchQuery}%`])
+		res.json(result.rows)
+	} catch (error) {
+		console.error('Error searching stations', error)
+	}
+})
+
+stationRouter.get('/search/espoo', async (req, res) => {
+	const searchQuery = req.query.q
+	console.log(searchQuery)
+
+	try {
+		const result = await pool.query(`
+			SELECT * FROM bike_stations WHERE (Nimi ILIKE $1 OR Namn ILIKE $1 OR Name_eng ILIKE $1) AND Kaupunki = $2
+		`,
+		[`%${searchQuery}%`, 'Espoo'])
+		res.json(result.rows)
+	} catch (error) {
+		console.error('Error searching stations', error)
+	}
+})
+
+stationRouter.get('/search/helsinki', async (req, res) => {
+	const searchQuery = req.query.q
+	console.log(searchQuery)
+
+	try {
+		const result = await pool.query(`
+			SELECT * FROM bike_stations WHERE (Nimi ILIKE $1 OR Namn ILIKE $1 OR Name_eng ILIKE $1) AND Kaupunki = $2
+		`,
+		[`%${searchQuery}%`, 'Helsinki'])
+		res.json(result.rows)
+	} catch (error) {
+		console.error('Error searching stations', error)
+	}
+})
+
+
 
 
 module.exports = stationRouter;

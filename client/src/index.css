@@ -10,7 +10,9 @@
 /* @import "./custom-utilities.css"; */
 
 .nav-custom-bg {
-	background-color: #C7EEDB
+	background-color: #C7EEDB;
+	/* position: sticky;
+	top: 0; */
 }
 
 .reactspinner {

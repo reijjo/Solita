@@ -18,7 +18,7 @@ import StationInfoJuly from "./components/stations/StationInfoJuly";
 
 const App = () => {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-t from-blue-200 to-blue-100">
+    <div className="flex min-h-screen flex-col bg-gradient-to-t from-blue-200 to-blue-100">
       <Router>
         <Header />
         <Nav />
