@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, Link, useLocation } from "react-router-dom";
 import stationService from "../../services/stations";
+import Map from "../GoogleMap";
 
 const StationInfoJune = () => {
   const { id } = useParams();
@@ -36,22 +37,19 @@ const StationInfoJune = () => {
     return location.pathname === path;
   };
 
-  console.log("INFO", info);
-  console.log("Dep", departures);
-  console.log("Ret", returns);
-  console.log("top5returns", top5returns);
-  console.log("top5depart", top5depart);
   return (
     <>
-      <div className="flex flex-col items-center justify-center journey-container">
-        <div className="flex justify-start min-h-screen p-6 m-4 bg-white rounded-md shadow">
+      <div className="journey-container flex flex-col items-center justify-center">
+        <div className="m-4 flex min-h-screen justify-start rounded-md bg-white p-6 shadow">
           <div>
             <div className="text-xl">
               {/* <div className="text-sm">Station id {info.id} </div> */}
               <strong>{info.nimi}</strong>
               <div>{info.namn}</div>
               <div>{info.name_eng}</div>
-              <div className="w-full border border-gray-400 aspect-w-1 aspect-h-1 h-36"></div>
+              <div className="aspect-w-1 aspect-h-1 h-72 w-full border border-gray-400">
+                <Map lat={info.y} lng={info.x} zoom={15} />
+              </div>
               <div>
                 {info.osoite}, {info.kaupunki}
               </div>
@@ -60,7 +58,7 @@ const StationInfoJune = () => {
               </div>
               <hr className="m-2" />
             </div>
-            <div className="flex justify-between m-2">
+            <div className="m-2 flex justify-between">
               <Link to={`/stations/info/${info.id}`}>
                 <div>All</div>
               </Link>
