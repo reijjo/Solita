@@ -24,6 +24,13 @@ const Nav = () => {
         >
           Stations
         </Link>
+        <Link
+          className="transition-colors duration-200 hover:text-green-500"
+          to="/extra"
+          //active={true}
+        >
+          EXTRA SUPRISE (add station)
+        </Link>
       </Navbar.Collapse>
     </Navbar>
   );

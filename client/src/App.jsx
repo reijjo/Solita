@@ -6,7 +6,6 @@ import Home from './components/journeys/Home'
 import May from "./components/journeys/May";
 import June from "./components/journeys/June";
 import July from "./components/journeys/July";
-import NotFound from "./components/NotFound";
 import Foot from "./components/Footer";
 import Stations from "./components/stations/Stations";
 import Espoo from "./components/stations/Espoo";
@@ -15,6 +14,7 @@ import StationInfo from "./components/stations/StationInfo";
 import StationInfoMay from "./components/stations/StationInfoMay";
 import StationInfoJune from "./components/stations/StationInfoJune";
 import StationInfoJuly from "./components/stations/StationInfoJuly";
+import Extra from "./components/Extra";
 
 const App = () => {
   return (
@@ -41,7 +41,8 @@ const App = () => {
               path="/stations/info/july/:id"
               element={<StationInfoJuly />}
             />
-            <Route path="*" element={<NotFound />} />
+            <Route path="/extra" element={<Extra />} />
+            <Route path="*" element={<Home />} />
           </Routes>
         </div>
         <Foot />

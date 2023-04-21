@@ -10,6 +10,7 @@ connectDB()
 const testRouter = require('./controllers/test')
 const journeyRouter = require('./controllers/journeys')
 const stationRouter = require("./controllers/stations");
+const extraRouter = require("./controllers/extra");
 
 app.use(express.json())
 app.use(cors())
@@ -18,6 +19,7 @@ app.use(middleware.requestLogger)
 app.use('/api/test', testRouter)
 app.use('/api/journeys', journeyRouter)
 app.use("/api/stations", stationRouter);
+app.use("/api/extra", extraRouter);
 
 
 app.use(middleware.unknownEndpoint)
