@@ -81,14 +81,6 @@ const Home = () => {
     return filteredJourneys;
   };
 
-  console.log(
-    "nyt alkaa tapahtuu",
-    filterJourneys(journeys).map((trip) => trip)
-  );
-
-  console.log("duration", duration);
-
-
   return (
     <>
       <Search

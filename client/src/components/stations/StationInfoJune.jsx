@@ -10,6 +10,8 @@ const StationInfoJune = () => {
   const [returns, setReturns] = useState("");
   const [top5returns, setTop5returns] = useState([]);
   const [top5depart, setTop5depart] = useState([]);
+	const [avgDisStart, setAvgDisStart] = useState([]);
+  const [avgDisReturn, setAvgDisReturn] = useState([]);
 
   useEffect(() => {
     async function fetchData(id) {
@@ -24,6 +26,10 @@ const StationInfoJune = () => {
         setTop5returns(result4);
         const result5 = await stationService.getJuneTopDepart(id);
         setTop5depart(result5);
+        const result6 = await stationService.getJuneAvgDis(id);
+        setAvgDisStart(result6);
+        const result7 = await stationService.getJuneRetAvgDis(id);
+        setAvgDisReturn(result7);
       } else {
         window.location.replace("/");
       }
@@ -85,6 +91,14 @@ const StationInfoJune = () => {
             </div>
             <div className="flex">
               Total Journeys Ending Here: {returns} kpl
+            </div>
+            <div>
+              Average Distance Starting From Here:{" "}
+              {(avgDisStart / 1000).toFixed(2)} km
+            </div>
+            <div>
+              Average Distance Ending Here: {(avgDisReturn / 1000).toFixed(2)}{" "}
+              km
             </div>
             <div className="flex font-bold">
               Top-5 return stations from here:{" "}

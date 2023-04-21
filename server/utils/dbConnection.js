@@ -13,8 +13,8 @@ const connectDB = () => {
 	pool.connect((err, client, release) => {
 		if (err) {
 			console.log('Error acquiring client', err.stack)
-			console.log('Retrying in 5 seconds...')
-			setTimeout(connectDB, 5000)
+			console.log("Retrying in 30 seconds...");
+      setTimeout(connectDB, 30000);
 		}
 		else {
 			console.log(`Connected to database ${config.POSTGRES_DB}`)

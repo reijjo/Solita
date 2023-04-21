@@ -21,6 +21,8 @@ services:
   client:
     build: ./client
     container_name: Solita-CLIENT
+    env_file:
+      - ./client/.env
     environment:
       - NODE_PATH=src
       - CHOKIDAR_USEPOLLING=true

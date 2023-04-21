@@ -336,6 +336,116 @@ stationRouter.get('/search/helsinki', async (req, res) => {
 	}
 })
 
+// AVERAGE DISTANCE
+
+stationRouter.get('/info/departures/all/avg/:id', async (req, res) => {
+	const { id } = req.params
+	try {
+		const result = await pool.query(`
+			SELECT AVG(distance_m) FROM journey_data WHERE departure_station_id = $1
+		`,
+		[id]
+		)
+		res.json(result.rows[0].avg)
+	} catch (error) {
+		console.error('Error counting avg starts', error)
+	}
+})
+
+stationRouter.get('/info/departures/may/avg/:id', async (req, res) => {
+	const { id } = req.params
+	try {
+		const result = await pool.query(`
+			SELECT AVG(distance_m) FROM may_journey_data WHERE departure_station_id = $1
+		`,
+		[id]
+		)
+		res.json(result.rows[0].avg)
+	} catch (error) {
+		console.error('Error counting avg starts', error)
+	}
+})
+
+stationRouter.get('/info/departures/june/avg/:id', async (req, res) => {
+	const { id } = req.params
+	try {
+		const result = await pool.query(`
+			SELECT AVG(distance_m) FROM june_journey_data WHERE departure_station_id = $1
+		`,
+		[id]
+		)
+		res.json(result.rows[0].avg)
+	} catch (error) {
+		console.error('Error counting avg starts', error)
+	}
+})
+
+stationRouter.get('/info/departures/july/avg/:id', async (req, res) => {
+	const { id } = req.params
+	try {
+		const result = await pool.query(`
+			SELECT AVG(distance_m) FROM july_journey_data WHERE departure_station_id = $1
+		`,
+		[id]
+		)
+		res.json(result.rows[0].avg)
+	} catch (error) {
+		console.error('Error counting avg starts', error)
+	}
+})
+
+stationRouter.get('/info/returns/all/avg/:id', async (req, res) => {
+	const { id } = req.params
+	try {
+		const result = await pool.query(
+			`SELECT AVG(distance_m) FROM journey_data WHERE return_station_id = $1`,
+			[id]
+		)
+		res.json(result.rows[0].avg)
+	} catch (error) {
+		console.error('Error counting svg returns', error)
+	}
+})
+
+stationRouter.get('/info/returns/may/avg/:id', async (req, res) => {
+	const { id } = req.params
+	try {
+		const result = await pool.query(
+			`SELECT AVG(distance_m) FROM may_journey_data WHERE return_station_id = $1`,
+			[id]
+		)
+		res.json(result.rows[0].avg)
+	} catch (error) {
+		console.error('Error counting svg returns', error)
+	}
+})
+
+stationRouter.get('/info/returns/june/avg/:id', async (req, res) => {
+	const { id } = req.params
+	try {
+		const result = await pool.query(
+			`SELECT AVG(distance_m) FROM june_journey_data WHERE return_station_id = $1`,
+			[id]
+		)
+		res.json(result.rows[0].avg)
+	} catch (error) {
+		console.error('Error counting svg returns', error)
+	}
+})
+
+stationRouter.get('/info/returns/july/avg/:id', async (req, res) => {
+	const { id } = req.params
+	try {
+		const result = await pool.query(
+			`SELECT AVG(distance_m) FROM july_journey_data WHERE return_station_id = $1`,
+			[id]
+		)
+		res.json(result.rows[0].avg)
+	} catch (error) {
+		console.error('Error counting svg returns', error)
+	}
+})
+
 
 
 

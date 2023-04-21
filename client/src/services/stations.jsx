@@ -128,6 +128,48 @@ const searchHelsinki = async (query) => {
 	return res.data
 }
 
+// AVG DISTANCE
+
+const getAllAvgDis = async (id) => {
+	const res = await axios.get(`${baseUrl}/info/departures/all/avg/${id}`)
+	return res.data
+}
+
+const getMayAvgDis = async (id) => {
+	const res = await axios.get(`${baseUrl}/info/departures/may/avg/${id}`)
+	return res.data
+}
+
+const getJuneAvgDis = async (id) => {
+	const res = await axios.get(`${baseUrl}/info/departures/june/avg/${id}`)
+	return res.data
+}
+
+const getJulyAvgDis = async (id) => {
+	const res = await axios.get(`${baseUrl}/info/departures/july/avg/${id}`)
+	return res.data
+}
+
+const getAllRetAvgDis = async (id) => {
+	const res = await axios.get(`${baseUrl}/info/returns/all/avg/${id}`)
+	return res.data
+}
+
+const getMayRetAvgDis = async (id) => {
+	const res = await axios.get(`${baseUrl}/info/returns/may/avg/${id}`)
+	return res.data
+}
+
+const getJuneRetAvgDis = async (id) => {
+	const res = await axios.get(`${baseUrl}/info/returns/june/avg/${id}`)
+	return res.data
+}
+
+const getJulyRetAvgDis = async (id) => {
+	const res = await axios.get(`${baseUrl}/info/returns/july/avg/${id}`)
+	return res.data
+}
+
 const stationService = {
   getAll,
   getStation,
@@ -152,6 +194,14 @@ const stationService = {
   searchAll,
   searchEspoo,
   searchHelsinki,
+  getAllAvgDis,
+  getMayAvgDis,
+  getJuneAvgDis,
+  getJulyAvgDis,
+  getAllRetAvgDis,
+  getMayRetAvgDis,
+  getJuneRetAvgDis,
+  getJulyRetAvgDis,
 };
 
 export default stationService;
