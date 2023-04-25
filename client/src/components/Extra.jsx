@@ -32,11 +32,11 @@ const Extra = () => {
     }
   };
 
-  console.log("Marker", markerPos);
-  console.log("address", address);
-  console.log("nimi", nimi);
-  console.log("osoite", osoite);
-  console.log("kaupunki", kaupunki);
+  // console.log("Marker", markerPos);
+  // console.log("address", address);
+  // console.log("nimi", nimi);
+  // console.log("osoite", osoite);
+  // console.log("kaupunki", kaupunki);
 
   const addStation = async () => {
     const station = {
@@ -56,10 +56,9 @@ const Extra = () => {
   };
 
   return (
-    <div className="journey-container flex flex-col items-center justify-center">
-      <div className="m-4 flex min-h-screen justify-start rounded-md bg-white p-6 shadow">
-        {/* <form onSubmit={addStation}> */}
-        <div className="m-2 flex flex-col">
+    <div className="flex flex-col items-center justify-center">
+      <div className="m-4 flex min-h-screen w-2/3 justify-center rounded-md bg-white p-6 shadow">
+        <div className="m-2 flex w-2/3 flex-col">
           <div className="aspect-w-1 aspect-h-1 h-72 w-full border border-gray-400">
             <ExtraMap
               lat={markerPos.lat}
@@ -93,10 +92,10 @@ const Extra = () => {
               {message}
             </div>
           ) : null}
-          <Button onClick={addStation}>Save</Button>
-          {/* <Button type="submit">Save</Button> */}
+          <Button classname="w-1/3" onClick={addStation}>
+            Save
+          </Button>
         </div>
-        {/* </form> */}
       </div>
     </div>
   );

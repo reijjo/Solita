@@ -7,6 +7,11 @@ const addStation = async (newObject) => {
   return res.data;
 };
 
-const extraService = { addStation };
+const addJourney = async (newObject) => {
+  const res = await axios.post(`${baseUrl}/addJourney`, newObject);
+  return res.data;
+};
+
+const extraService = { addStation, addJourney };
 
 export default extraService;

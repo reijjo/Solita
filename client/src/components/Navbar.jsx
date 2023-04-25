@@ -13,23 +13,26 @@ const Nav = () => {
         <Link
           className="transition-colors duration-200 hover:text-green-500"
           to="/"
-          //active={true}
         >
           Journeys
         </Link>
         <Link
           className="transition-colors duration-200 hover:text-green-500"
           to="/stations"
-          //active={true}
         >
           Stations
         </Link>
         <Link
           className="transition-colors duration-200 hover:text-green-500"
           to="/extra"
-          //active={true}
         >
-          EXTRA SUPRISE (add station)
+          EXTRA (add station)
+        </Link>
+        <Link
+          className="transition-colors duration-200 hover:text-green-500"
+          to="/surprise"
+        >
+          SUPRISE (add journey)
         </Link>
       </Navbar.Collapse>
     </Navbar>

@@ -15,6 +15,7 @@ import StationInfoMay from "./components/stations/StationInfoMay";
 import StationInfoJune from "./components/stations/StationInfoJune";
 import StationInfoJuly from "./components/stations/StationInfoJuly";
 import Extra from "./components/Extra";
+import Surprise from "./components/Surprise";
 
 const App = () => {
   return (
@@ -42,6 +43,7 @@ const App = () => {
               element={<StationInfoJuly />}
             />
             <Route path="/extra" element={<Extra />} />
+            <Route path="/surprise" element={<Surprise />} />
             <Route path="*" element={<Home />} />
           </Routes>
         </div>
