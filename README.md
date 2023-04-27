@@ -72,7 +72,7 @@ Also, keep in mind that some APIs may require billing information and a payment 
 ### First have the app up and running
 * Running Cypress on the background
 	* Open new terminal in the frontend folder => npm run cypress:open
-	* New window pops up. Choose E2E Testing => Choose your browser (I suggest Chrome) => run the tests by clicking test file
+	* New window pops up. Choose E2E Testing => Choose your browser (Chrome) => run the tests by clicking test file
 ### Or
 * Running all the tests at once
 	* Open new terminal in the frontend folder => npm run test:e2e
