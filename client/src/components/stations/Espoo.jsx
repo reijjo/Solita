@@ -44,12 +44,9 @@ const Espoo = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log("STATIONS", stations);
-
   const searchStations = async (query) => {
     try {
       const results = await stationService.searchEspoo(query);
-      console.log("searchRESULT", searchResult);
       setSearchResult(results);
     } catch (error) {
       console.error("Error searching stations", error);
@@ -73,7 +70,7 @@ const Espoo = () => {
         <Navbar
           fluid={true}
           //rounded={true}
-          // className="nav-custom-bg"
+          className="nav-custom-bg"
         >
           <Navbar.Toggle />
           <Navbar.Collapse>

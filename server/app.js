@@ -14,7 +14,7 @@ const extraRouter = require("./controllers/extra");
 
 app.use(express.json())
 app.use(cors())
-app.use(middleware.requestLogger)
+// app.use(middleware.requestLogger)
 
 app.use('/api/test', testRouter)
 app.use('/api/journeys', journeyRouter)

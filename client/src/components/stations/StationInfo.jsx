@@ -37,9 +37,6 @@ const StationInfo = () => {
     fetchData(id);
   }, [id]);
 
-  console.log("avgstart", avgDisStart);
-  console.log("avgreturn", avgDisReturn);
-
   const location = useLocation();
 
   const isActiveLink = (path) => {

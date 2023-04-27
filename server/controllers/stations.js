@@ -42,7 +42,6 @@ stationRouter.get("/helsinki", async (req, res) => {
 
 stationRouter.get("/info/:id", async (req, res) => {
   const { id } = req.params;
-  console.log("BACKK ", id);
   try {
     const result = await pool.query(
       `SELECT * FROM bike_stations WHERE id = $1`,
@@ -291,50 +290,53 @@ stationRouter.get("/info/returns/july/top/:id", async (req, res) => {
 
 // SEARCH STATIONS
 
-stationRouter.get('/search/all', async (req, res) => {
-	const searchQuery = req.query.q
-	console.log(searchQuery)
+stationRouter.get("/search/all", async (req, res) => {
+  const searchQuery = req.query.q;
 
-	try {
-		const result = await pool.query(`
+  try {
+    const result = await pool.query(
+      `
 			SELECT * FROM bike_stations WHERE (Nimi ILIKE $1 OR Namn ILIKE $1 OR Name_eng ILIKE $1)
 		`,
-		[`%${searchQuery}%`])
-		res.json(result.rows)
-	} catch (error) {
-		console.error('Error searching stations', error)
-	}
-})
+      [`%${searchQuery}%`]
+    );
+    res.json(result.rows);
+  } catch (error) {
+    console.error("Error searching stations", error);
+  }
+});
 
-stationRouter.get('/search/espoo', async (req, res) => {
-	const searchQuery = req.query.q
-	console.log(searchQuery)
+stationRouter.get("/search/espoo", async (req, res) => {
+  const searchQuery = req.query.q;
 
-	try {
-		const result = await pool.query(`
+  try {
+    const result = await pool.query(
+      `
 			SELECT * FROM bike_stations WHERE (Nimi ILIKE $1 OR Namn ILIKE $1 OR Name_eng ILIKE $1) AND Kaupunki = $2
 		`,
-		[`%${searchQuery}%`, 'Espoo'])
-		res.json(result.rows)
-	} catch (error) {
-		console.error('Error searching stations', error)
-	}
-})
+      [`%${searchQuery}%`, "Espoo"]
+    );
+    res.json(result.rows);
+  } catch (error) {
+    console.error("Error searching stations", error);
+  }
+});
 
-stationRouter.get('/search/helsinki', async (req, res) => {
-	const searchQuery = req.query.q
-	console.log(searchQuery)
+stationRouter.get("/search/helsinki", async (req, res) => {
+  const searchQuery = req.query.q;
 
-	try {
-		const result = await pool.query(`
+  try {
+    const result = await pool.query(
+      `
 			SELECT * FROM bike_stations WHERE (Nimi ILIKE $1 OR Namn ILIKE $1 OR Name_eng ILIKE $1) AND Kaupunki = $2
 		`,
-		[`%${searchQuery}%`, 'Helsinki'])
-		res.json(result.rows)
-	} catch (error) {
-		console.error('Error searching stations', error)
-	}
-})
+      [`%${searchQuery}%`, "Helsinki"]
+    );
+    res.json(result.rows);
+  } catch (error) {
+    console.error("Error searching stations", error);
+  }
+});
 
 // AVERAGE DISTANCE
 

@@ -48,7 +48,6 @@ const June = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log("dataLength", journeys.length);
 
   const filterJourneys = (journeys) => {
     let filteredJourneys = journeys;

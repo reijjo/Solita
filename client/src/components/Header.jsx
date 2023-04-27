@@ -1,16 +1,14 @@
 
 const Header = () => {
 	return (
-		<div className="relative bg-center">
-			<header className="flex items-center h-24 bg-green-200">
-				<div
-					className="flex items-center justify-center w-full"
-				>
-					<a href='/'>Helsinki City Bike App</a>
-				</div>
-			</header>
-		</div>
-	)
+    <div className="relative bg-center">
+      <header className="flex h-24 items-center bg-blue-500">
+        <div className="flex w-full items-center justify-center text-lg font-extrabold text-white">
+          <a href="/">Helsinki City Bike App</a>
+        </div>
+      </header>
+    </div>
+  );
 }
 
 export default Header

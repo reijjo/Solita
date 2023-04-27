@@ -81,13 +81,6 @@ const May = () => {
     return filteredJourneys;
   };
 
-  console.log(
-    "nyt alkaa tapahtuu",
-    journeys.map((trip) => trip)
-  );
-
-  console.log("dataLength", journeys.length);
-
   return (
     <>
       <Search

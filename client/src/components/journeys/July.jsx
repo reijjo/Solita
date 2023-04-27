@@ -48,7 +48,6 @@ const July = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log("dataLength", journeys.length);
 
   const filterJourneys = (journeys) => {
     let filteredJourneys = journeys;
@@ -82,11 +81,6 @@ const July = () => {
     }
     return filteredJourneys;
   };
-
-  console.log(
-    "nyt alkaa tapahtuu",
-    filterJourneys(journeys).map((trip) => trip)
-  );
 
   return (
     <>

@@ -6,33 +6,33 @@ const Nav = () => {
     <Navbar
       fluid={true}
       //rounded={true}
-      className="nav-custom-bg"
+      className="bg-grey-50"
     >
       <Navbar.Toggle />
       <Navbar.Collapse>
         <Link
-          className="transition-colors duration-200 hover:text-green-500"
+          className="transition-colors duration-200 hover:text-blue-500"
           to="/"
         >
           Journeys
         </Link>
         <Link
-          className="transition-colors duration-200 hover:text-green-500"
+          className="transition-colors duration-200 hover:text-blue-500"
           to="/stations"
         >
           Stations
         </Link>
         <Link
-          className="transition-colors duration-200 hover:text-green-500"
+          className="transition-colors duration-200 hover:text-blue-500"
           to="/extra"
         >
           EXTRA (add station)
         </Link>
         <Link
-          className="transition-colors duration-200 hover:text-green-500"
+          className="transition-colors duration-200 hover:text-blue-500"
           to="/surprise"
         >
-          SUPRISE (add journey)
+          SURPRISE (add journey)
         </Link>
       </Navbar.Collapse>
     </Navbar>

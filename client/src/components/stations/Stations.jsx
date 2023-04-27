@@ -45,12 +45,9 @@ const Stations = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log("STATIONS", stations);
-
   const searchStations = async (query) => {
     try {
       const results = await stationService.searchAll(query);
-      console.log("searchRESULT", searchResult);
       setSearchResult(results);
     } catch (error) {
       console.error("Error searching stations", error);
@@ -74,7 +71,7 @@ const Stations = () => {
         <Navbar
           fluid={true}
           //rounded={true}
-          // className="nav-custom-bg"
+          className="nav-custom-bg"
         >
           <Navbar.Toggle />
           <Navbar.Collapse>
@@ -89,6 +86,7 @@ const Stations = () => {
             </Button>
             <input
               className="my-2 rounded-xl p-2"
+              name="searchStation"
               type="text"
               placeholder="Search station..."
               value={searchQuery}

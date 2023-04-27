@@ -1,4 +1,5 @@
 const extraRouter = require("express").Router();
+const stationRouter = require("./stations");
 const { pool } = require("../utils/dbConnection");
 
 extraRouter.post("/addStation", async (req, res) => {
@@ -49,9 +50,7 @@ extraRouter.post("/addStation", async (req, res) => {
         myFid.rows[0].max + 1,
       ]
     );
-    console.log("MUN ID", myId.rows[0].max + 1);
 
-    console.log(station);
     res.json({
       message: `Station (${station.nimi}) added succesfully.`,
       adding,
@@ -60,6 +59,31 @@ extraRouter.post("/addStation", async (req, res) => {
     console.error("Error adding station", error);
   }
 });
+
+// GET MAX ID FOR CYPRESS TESTS
+extraRouter.get("/addStation/max", async (req, res) => {
+  try {
+    const result = await pool.query("SELECT MAX(id) FROM bike_stations");
+    res.json({ maxId: result.rows[0].max });
+  } catch (error) {
+    console.error("Error fetching max id for stations");
+  }
+});
+
+// EXTRA ENDPOINT FOR DELETING STATION FOR CYPRESS TESTS
+stationRouter.delete("/info/:id", async (req, res) => {
+  try {
+    const { id } = req.params;
+    const result = await pool.query("DELETE FROM bike_stations WHERE id = $1", [
+      id,
+    ]);
+    res.json({ result, message: "Station deleted." });
+  } catch (error) {
+    console.log("Error deleting station!");
+  }
+});
+
+// Add Journey
 
 extraRouter.post("/addJourney", async (req, res) => {
   const journey = req.body;
@@ -103,8 +127,6 @@ extraRouter.post("/addJourney", async (req, res) => {
   const departure_time = new Date().toUTCString();
   const return_time = new Date(Date.now() + 15 * 60000).toUTCString();
 
-  console.log(departure_time, return_time);
-
   try {
     const addJourney = await pool.query(
       `
@@ -130,5 +152,6 @@ extraRouter.post("/addJourney", async (req, res) => {
     console.error("Error adding journey!");
   }
 });
+
 
 module.exports = extraRouter;

@@ -15,7 +15,6 @@ const Surprise = () => {
   const searchDepStations = async (query) => {
     try {
       const results = await stationService.searchAll(query);
-      console.log("searchresult", searchDepResult);
       setSearchDepResult(results);
     } catch (error) {
       console.error("Error searching stations");
@@ -25,7 +24,6 @@ const Surprise = () => {
   const searchRetStations = async (query) => {
     try {
       const results = await stationService.searchAll(query);
-      console.log("searchRETresult", searchRetResult);
       setSearchRetResult(results);
     } catch (error) {
       console.error("Error searching stations");
@@ -82,7 +80,7 @@ const Surprise = () => {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="m-4 flex min-h-screen w-2/3 justify-center rounded-md bg-white p-6 shadow">
+      <div className="m-4 flex min-h-screen w-2/3 justify-center overflow-x-auto rounded-md bg-white p-6 shadow">
         <div className="m-2 flex w-2/3 flex-col">
           <table>
             <tbody>
