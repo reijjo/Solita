@@ -32,8 +32,6 @@ const Extra = () => {
     }
   };
 
-	console.log("adderss", address);
-
   const addStation = async () => {
     const station = {
       nimi: nimi,
