@@ -5,8 +5,7 @@ Helsinki City Bike App
 * Let's imagine that you have received an interesting project offer to create a UI and a backend service for displaying data from journeys made with city bikes in the Helsinki Capital area.
 
 ### The exercise
-* Create a web application that uses a backend service to fetch the data.
-* Backend can use a database, or it can be memory-based.
+* https://github.com/solita/dev-academy-2023-exercise
 
 
 ## Technologies:
