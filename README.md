@@ -5,8 +5,7 @@ Helsinki City Bike App
 * Let's imagine that you have received an interesting project offer to create a UI and a backend service for displaying data from journeys made with city bikes in the Helsinki Capital area.
 
 ### The exercise
-* Create a web application that uses a backend service to fetch the data.
-* Backend can use a database, or it can be memory-based.
+* https://github.com/solita/dev-academy-2023-exercise
 
 
 ## Technologies:
@@ -73,7 +72,7 @@ Also, keep in mind that some APIs may require billing information and a payment 
 ### First have the app up and running
 * Running Cypress on the background
 	* Open new terminal in the frontend folder => npm run cypress:open
-	* New window pops up. Choose E2E Testing => Choose your browser (I suggest Chrome) => run the tests by clicking test file
+	* New window pops up. Choose E2E Testing => Choose your browser (Chrome) => run the tests by clicking test file
 ### Or
 * Running all the tests at once
 	* Open new terminal in the frontend folder => npm run test:e2e
