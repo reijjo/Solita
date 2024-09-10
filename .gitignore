@@ -1,3 +1,6 @@
 .DS_Store
 /db/journey_data/*.csv
 /server/.env
+**/node_modules
+**/.DS_Store
+**/.env
